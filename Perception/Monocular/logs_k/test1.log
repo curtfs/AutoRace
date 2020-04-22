@@ -1,0 +1,316 @@
+Caches exist: ./gs/03083f6f8ab6011e5825cf091cb9f452ad56af70975455445b42e72c323f8de2/images.npy and ./gs/03083f6f8ab6011e5825cf091cb9f452ad56af70975455445b42e72c323f8de2/labels.npy!
+training image number: 2718
+validation image number: 479
+Including geometric loss: True
+Loss type: l1_softargmax
+EPOCH 0
+	Training: MSE/Geometric/Total Loss: 1.2715765266/0.0/1.2715765266
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.5948193452/0.0/0.5948193452
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+EPOCH 1
+	Training: MSE/Geometric/Total Loss: 0.6339377049/0.0/0.6339377049
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.4802925861/0.0/0.4802925861
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+EPOCH 2
+	Training: MSE/Geometric/Total Loss: 0.6122960375/0.0/0.6122960375
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.4866219489/0.0/0.4866219489
+EPOCH 3
+	Training: MSE/Geometric/Total Loss: 0.5879233111/0.0/0.5879233111
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.5021752309/0.0/0.5021752309
+Saving model to outputs/april-2020-experiments/test1/3_loss_0.5.pt
+EPOCH 4
+	Training: MSE/Geometric/Total Loss: 0.5685737119/0.0/0.5685737119
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.4407082133/0.0/0.4407082133
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+EPOCH 5
+	Training: MSE/Geometric/Total Loss: 0.5464467694/0.0/0.5464467694
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.4372861646/0.0/0.4372861646
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+EPOCH 6
+	Training: MSE/Geometric/Total Loss: 0.5282610483/0.0/0.5282610483
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.4328226581/0.0/0.4328226581
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+EPOCH 7
+	Training: MSE/Geometric/Total Loss: 0.5200700255/0.0/0.5200700255
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.4070323231/0.0/0.4070323231
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+Saving model to outputs/april-2020-experiments/test1/7_loss_0.41.pt
+EPOCH 8
+	Training: MSE/Geometric/Total Loss: 0.5111709458/0.0/0.5111709458
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3739266567/0.0/0.3739266567
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+EPOCH 9
+	Training: MSE/Geometric/Total Loss: 0.4988366039/0.0/0.4988366039
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.4010733222/0.0/0.4010733222
+EPOCH 10
+	Training: MSE/Geometric/Total Loss: 0.4916605413/0.0/0.4916605413
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3960225497/0.0/0.3960225497
+EPOCH 11
+	Training: MSE/Geometric/Total Loss: 0.4975683328/0.0/0.4975683328
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.4041195299/0.0/0.4041195299
+Saving model to outputs/april-2020-experiments/test1/11_loss_0.4.pt
+EPOCH 12
+	Training: MSE/Geometric/Total Loss: 0.485327328/0.0/0.485327328
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3869160151/0.0/0.3869160151
+EPOCH 13
+	Training: MSE/Geometric/Total Loss: 0.4686376891/0.0/0.4686376891
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3828736221/0.0/0.3828736221
+EPOCH 14
+	Training: MSE/Geometric/Total Loss: 0.4513272832/0.0/0.4513272832
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3761504672/0.0/0.3761504672
+EPOCH 15
+	Training: MSE/Geometric/Total Loss: 0.4463327664/0.0/0.4463327664
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3812322132/0.0/0.3812322132
+Saving model to outputs/april-2020-experiments/test1/15_loss_0.38.pt
+EPOCH 16
+	Training: MSE/Geometric/Total Loss: 0.445428438/0.0/0.445428438
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.355457369/0.0/0.355457369
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+EPOCH 17
+	Training: MSE/Geometric/Total Loss: 0.4331560079/0.0/0.4331560079
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3817299681/0.0/0.3817299681
+EPOCH 18
+	Training: MSE/Geometric/Total Loss: 0.4260166887/0.0/0.4260166887
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3819534262/0.0/0.3819534262
+EPOCH 19
+	Training: MSE/Geometric/Total Loss: 0.4134681498/0.0/0.4134681498
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3783960662/0.0/0.3783960662
+Saving model to outputs/april-2020-experiments/test1/19_loss_0.38.pt
+EPOCH 20
+	Training: MSE/Geometric/Total Loss: 0.4074626674/0.0/0.4074626674
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.4143784535/0.0/0.4143784535
+EPOCH 21
+	Training: MSE/Geometric/Total Loss: 0.4052928746/0.0/0.4052928746
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3488225114/0.0/0.3488225114
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+EPOCH 22
+	Training: MSE/Geometric/Total Loss: 0.4024377925/0.0/0.4024377925
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3626921136/0.0/0.3626921136
+EPOCH 23
+	Training: MSE/Geometric/Total Loss: 0.3976697073/0.0/0.3976697073
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3446996412/0.0/0.3446996412
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+Saving model to outputs/april-2020-experiments/test1/23_loss_0.34.pt
+EPOCH 24
+	Training: MSE/Geometric/Total Loss: 0.3937449603/0.0/0.3937449603
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3427145244/0.0/0.3427145244
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+EPOCH 25
+	Training: MSE/Geometric/Total Loss: 0.387996216/0.0/0.387996216
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3444534907/0.0/0.3444534907
+EPOCH 26
+	Training: MSE/Geometric/Total Loss: 0.3834614613/0.0/0.3834614613
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3292900491/0.0/0.3292900491
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+EPOCH 27
+	Training: MSE/Geometric/Total Loss: 0.3855073533/0.0/0.3855073533
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3181939291/0.0/0.3181939291
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+Saving model to outputs/april-2020-experiments/test1/27_loss_0.32.pt
+EPOCH 28
+	Training: MSE/Geometric/Total Loss: 0.37253543/0.0/0.37253543
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.324318043/0.0/0.324318043
+EPOCH 29
+	Training: MSE/Geometric/Total Loss: 0.3689636914/0.0/0.3689636914
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3235135197/0.0/0.3235135197
+EPOCH 30
+	Training: MSE/Geometric/Total Loss: 0.3636083929/0.0/0.3636083929
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3316248221/0.0/0.3316248221
+EPOCH 31
+	Training: MSE/Geometric/Total Loss: 0.3683510507/0.0/0.3683510507
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3146957493/0.0/0.3146957493
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+Saving model to outputs/april-2020-experiments/test1/31_loss_0.31.pt
+EPOCH 32
+	Training: MSE/Geometric/Total Loss: 0.3643387286/0.0/0.3643387286
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3087556718/0.0/0.3087556718
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+EPOCH 33
+	Training: MSE/Geometric/Total Loss: 0.3458389706/0.0/0.3458389706
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2911931507/0.0/0.2911931507
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+EPOCH 34
+	Training: MSE/Geometric/Total Loss: 0.3405554785/0.0/0.3405554785
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3180527421/0.0/0.3180527421
+EPOCH 35
+	Training: MSE/Geometric/Total Loss: 0.3430270437/0.0/0.3430270437
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.302583837/0.0/0.302583837
+Saving model to outputs/april-2020-experiments/test1/35_loss_0.3.pt
+EPOCH 36
+	Training: MSE/Geometric/Total Loss: 0.3325828514/0.0/0.3325828514
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.296234293/0.0/0.296234293
+EPOCH 37
+	Training: MSE/Geometric/Total Loss: 0.3261789313/0.0/0.3261789313
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2693816231/0.0/0.2693816231
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+EPOCH 38
+	Training: MSE/Geometric/Total Loss: 0.3258876513/0.0/0.3258876513
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2952192962/0.0/0.2952192962
+EPOCH 39
+	Training: MSE/Geometric/Total Loss: 0.3138770717/0.0/0.3138770717
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2767878328/0.0/0.2767878328
+Saving model to outputs/april-2020-experiments/test1/39_loss_0.28.pt
+EPOCH 40
+	Training: MSE/Geometric/Total Loss: 0.311897113/0.0/0.311897113
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2836854156/0.0/0.2836854156
+EPOCH 41
+	Training: MSE/Geometric/Total Loss: 0.3100072717/0.0/0.3100072717
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2519005702/0.0/0.2519005702
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+EPOCH 42
+	Training: MSE/Geometric/Total Loss: 0.3043395002/0.0/0.3043395002
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2638650986/0.0/0.2638650986
+EPOCH 43
+	Training: MSE/Geometric/Total Loss: 0.3038216952/0.0/0.3038216952
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2945485329/0.0/0.2945485329
+Saving model to outputs/april-2020-experiments/test1/43_loss_0.29.pt
+EPOCH 44
+	Training: MSE/Geometric/Total Loss: 0.2954346557/0.0/0.2954346557
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2559024735/0.0/0.2559024735
+EPOCH 45
+	Training: MSE/Geometric/Total Loss: 0.2881823505/0.0/0.2881823505
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2520581006/0.0/0.2520581006
+EPOCH 46
+	Training: MSE/Geometric/Total Loss: 0.2844005685/0.0/0.2844005685
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2562973307/0.0/0.2562973307
+EPOCH 47
+	Training: MSE/Geometric/Total Loss: 0.2824165437/0.0/0.2824165437
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2516936261/0.0/0.2516936261
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+Saving model to outputs/april-2020-experiments/test1/47_loss_0.25.pt
+EPOCH 48
+	Training: MSE/Geometric/Total Loss: 0.2892923979/0.0/0.2892923979
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2808195512/0.0/0.2808195512
+EPOCH 49
+	Training: MSE/Geometric/Total Loss: 0.2774738037/0.0/0.2774738037
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2785875152/0.0/0.2785875152
+EPOCH 50
+	Training: MSE/Geometric/Total Loss: 0.281651909/0.0/0.281651909
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2864368416/0.0/0.2864368416
+EPOCH 51
+	Training: MSE/Geometric/Total Loss: 0.2701031943/0.0/0.2701031943
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2544093054/0.0/0.2544093054
+Saving model to outputs/april-2020-experiments/test1/51_loss_0.25.pt
+EPOCH 52
+	Training: MSE/Geometric/Total Loss: 0.2703997924/0.0/0.2703997924
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2479840831/0.0/0.2479840831
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+EPOCH 53
+	Training: MSE/Geometric/Total Loss: 0.2669535023/0.0/0.2669535023
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3184574616/0.0/0.3184574616
+EPOCH 54
+	Training: MSE/Geometric/Total Loss: 0.2733009852/0.0/0.2733009852
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2630075935/0.0/0.2630075935
+EPOCH 55
+	Training: MSE/Geometric/Total Loss: 0.2624223399/0.0/0.2624223399
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2804128348/0.0/0.2804128348
+Saving model to outputs/april-2020-experiments/test1/55_loss_0.28.pt
+EPOCH 56
+	Training: MSE/Geometric/Total Loss: 0.2555355228/0.0/0.2555355228
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2490828224/0.0/0.2490828224
+EPOCH 57
+	Training: MSE/Geometric/Total Loss: 0.2571457926/0.0/0.2571457926
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2613238572/0.0/0.2613238572
+EPOCH 58
+	Training: MSE/Geometric/Total Loss: 0.2644637271/0.0/0.2644637271
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2831933973/0.0/0.2831933973
+EPOCH 59
+	Training: MSE/Geometric/Total Loss: 0.2519722148/0.0/0.2519722148
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.22754694/0.0/0.22754694
+Saving ONNX model to outputs/april-2020-experiments/test1/best_keypoints_8080.onnx
+Saving model to outputs/april-2020-experiments/test1/59_loss_0.23.pt
+EPOCH 60
+	Training: MSE/Geometric/Total Loss: 0.2517347518/0.0/0.2517347518
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.3021451889/0.0/0.3021451889
+EPOCH 61
+	Training: MSE/Geometric/Total Loss: 0.2511580634/0.0/0.2511580634
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2439103247/0.0/0.2439103247
+EPOCH 62
+	Training: MSE/Geometric/Total Loss: 0.253748166/0.0/0.253748166
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2490834915/0.0/0.2490834915
+EPOCH 63
+	Training: MSE/Geometric/Total Loss: 0.2558361089/0.0/0.2558361089
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.264441662/0.0/0.264441662
+Saving model to outputs/april-2020-experiments/test1/63_loss_0.26.pt
+EPOCH 64
+	Training: MSE/Geometric/Total Loss: 0.2450709822/0.0/0.2450709822
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.266212711/0.0/0.266212711
+EPOCH 65
+	Training: MSE/Geometric/Total Loss: 0.2410257794/0.0/0.2410257794
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2671925546/0.0/0.2671925546
+EPOCH 66
+	Training: MSE/Geometric/Total Loss: 0.2497505397/0.0/0.2497505397
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2906311191/0.0/0.2906311191
+EPOCH 67
+	Training: MSE/Geometric/Total Loss: 0.2401910245/0.0/0.2401910245
+	Starting validation...
+	Validation: MSE/Geometric/Total Loss: 0.2862051756/0.0/0.2862051756
+Saving model to outputs/april-2020-experiments/test1/67_loss_0.29.pt
+Training is stopped due; loss no longer decreases. Epoch 59 is has the best validation loss.

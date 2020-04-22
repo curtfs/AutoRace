@@ -1,0 +1,132 @@
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/queues.py", line 240, in _feed
+    send_bytes(obj)
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+Traceback (most recent call last):
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/queues.py", line 240, in _feed
+    send_bytes(obj)
+Traceback (most recent call last):
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/queues.py", line 240, in _feed
+    send_bytes(obj)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/queues.py", line 240, in _feed
+    send_bytes(obj)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/queues.py", line 240, in _feed
+    send_bytes(obj)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/queues.py", line 240, in _feed
+    send_bytes(obj)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/queues.py", line 240, in _feed
+    send_bytes(obj)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/queues.py", line 240, in _feed
+    send_bytes(obj)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/queues.py", line 240, in _feed
+    send_bytes(obj)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 404, in _send_bytes
+    self._send(header + buf)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 404, in _send_bytes
+    self._send(header + buf)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 404, in _send_bytes
+    self._send(header + buf)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 404, in _send_bytes
+    self._send(header + buf)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 368, in _send
+    n = write(self._handle, buf)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 404, in _send_bytes
+    self._send(header + buf)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 368, in _send
+    n = write(self._handle, buf)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 404, in _send_bytes
+    self._send(header + buf)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 368, in _send
+    n = write(self._handle, buf)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+BrokenPipeError: [Errno 32] Broken pipe
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/queues.py", line 240, in _feed
+    send_bytes(obj)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/queues.py", line 240, in _feed
+    send_bytes(obj)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 404, in _send_bytes
+    self._send(header + buf)
+Traceback (most recent call last):
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 404, in _send_bytes
+    self._send(header + buf)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 404, in _send_bytes
+    self._send(header + buf)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 368, in _send
+    n = write(self._handle, buf)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/queues.py", line 240, in _feed
+    send_bytes(obj)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 368, in _send
+    n = write(self._handle, buf)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 368, in _send
+    n = write(self._handle, buf)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 404, in _send_bytes
+    self._send(header + buf)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 368, in _send
+    n = write(self._handle, buf)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 404, in _send_bytes
+    self._send(header + buf)
+BrokenPipeError: [Errno 32] Broken pipe
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+BrokenPipeError: [Errno 32] Broken pipe
+BrokenPipeError: [Errno 32] Broken pipe
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 368, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 368, in _send
+    n = write(self._handle, buf)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 368, in _send
+    n = write(self._handle, buf)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 404, in _send_bytes
+    self._send(header + buf)
+BrokenPipeError: [Errno 32] Broken pipe
+  File "train.py", line 363, in <module>
+BrokenPipeError: [Errno 32] Broken pipe
+BrokenPipeError: [Errno 32] Broken pipe
+    min_epochs=opt.min_epochsBrokenPipeError: [Errno 32] Broken pipe
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 368, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/multiprocessing/connection.py", line 368, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+BrokenPipeError: [Errno 32] Broken pipe
+
+  File "train.py", line 213, in main
+    optimizer=optimizer)
+  File "train.py", line 72, in run_epoch
+    losses[0].sum().backward()
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/site-packages/torch/tensor.py", line 107, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/abdouseif/anaconda3/envs/fsai-cv-y/lib/python3.6/site-packages/torch/autograd/__init__.py", line 93, in backward
+    allow_unreachable=True)  # allow_unreachable flag
+KeyboardInterrupt
