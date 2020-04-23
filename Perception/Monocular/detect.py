@@ -15,14 +15,15 @@ import multiprocessing
 import subprocess
 import shutil
 import cv2
+import time
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from tensorboardX import SummaryWriter
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
-
-from PIL import Image, ImageDraw
+from timeit import default_timer as timer
+from PIL import Image, ImageDraw, ImageFont
 
 import torchvision
 from models import Darknet
@@ -38,9 +39,11 @@ warnings.filterwarnings("ignore")
 detection_tmp_path = "/tmp/detect/"
 
 visualizer = plt.figure()
-ax = visualizer.add_subplot(111, projection='3d')
+# ax = visualizer.add_subplot(111)
+# ax.set_xlim(-10, 10)
+# ax.set_ylim(0, 20)
 
-
+plt.ion()
 def main(target_path,output_path,weights_path,model_cfg,kpoints_model_path,conf_thres,nms_thres,xy_loss,wh_loss,no_object_loss,object_loss,vanilla_anchor):
 
     cuda = torch.cuda.is_available()
@@ -57,7 +60,7 @@ def main(target_path,output_path,weights_path,model_cfg,kpoints_model_path,conf_
     # Load weights
     model.load_weights(weights_path, model.get_start_weight_dim())
     model.to(device, non_blocking=True)
-
+    print(device)
     #Keypoints part
     #****************************##******************##*********************##***************##*****************##****************
     output_path_k = "outputs_k/visualization/"
@@ -69,9 +72,10 @@ def main(target_path,output_path,weights_path,model_cfg,kpoints_model_path,conf_
     model_k = KeypointNet()
     model_k.load_state_dict(torch.load(model_filepath).get('model'))
     model_k.eval()
-   
-    #****************************##******************##*********************##***************##*****************##****************
 
+    #****************************##******************##*********************##***************##*****************##****************
+    startG = timer()
+    print("Detection Started")
     detect(target_path,
            output_path,
            model,
@@ -79,9 +83,13 @@ def main(target_path,output_path,weights_path,model_cfg,kpoints_model_path,conf_
            conf_thres=conf_thres,
            nms_thres=nms_thres,
            model_k=model_k)
+    endG = timer()
+    print("Landmark Detection finished: ", (endG-startG), " seconds")
 
 def single_img_detect(target_path,output_path,mode,model,device,conf_thres,nms_thres,model_k1):
-
+    start = timer()
+    print("Retrieving Image")
+    rnd_img = Image.open(target_path).convert('RGB')
     img = Image.open(target_path).convert('RGB')
     w, h = img.size
     new_width, new_height = model.img_size()
@@ -95,34 +103,49 @@ def single_img_detect(target_path,output_path,mode,model,device,conf_thres,nms_t
 
     img = torchvision.transforms.functional.to_tensor(img)
     img = img.unsqueeze(0)
-    
+    end = timer()
+    print("Retrieving finished: ", (end-start), " seconds")
+
     with torch.no_grad():
-        model.eval()
+        start = timer()
+        print("YOLO Detection Started")
+        #model.eval()
         img = img.to(device, non_blocking=True)
         # output,first_layer,second_layer,third_layer = model(img)
         output = model(img)
-        
         for detections in output:
+            print(detections[:,0])
             detections = detections[detections[:, 4] > conf_thres]
-            box_corner = torch.zeros((detections.shape[0], 4), device=detections.device)
             
+            box_corner = torch.zeros((detections.shape[0], 4), device=detections.device)
+
             xy = detections[:, 0:2]
             wh = detections[:, 2:4] / 2
-           
+
             box_corner[:, 0:2] = xy - wh
             box_corner[:, 2:4] = xy + wh
             probabilities = detections[:, 4]
             nms_indices = nms(box_corner, probabilities, nms_thres)
             main_box_corner = box_corner[nms_indices]
-            if nms_indices.shape[0] == 0:  
+            if nms_indices.shape[0] == 0:
                 continue
         img_with_boxes = Image.open(target_path)
         image2 = cv2.imread(target_path)
+        end = timer()
+        print("YOLO Detection finished: ", (end-start), " seconds")
+
+        start = timer()
+        print("Keypoint Regression + PnP Started")
+        ax = visualizer.add_subplot(111)
+        ax.set_xlim(-6, 6)
+        ax.set_ylim(-1, 15)
+        tveclist = []
+        successlist = []
         for i in range(len(main_box_corner)):
             x0 = main_box_corner[i, 0].to('cpu').item() / ratio - pad_w
             y0 = main_box_corner[i, 1].to('cpu').item() / ratio - pad_h
             x1 = main_box_corner[i, 2].to('cpu').item() / ratio - pad_w
-            y1 = main_box_corner[i, 3].to('cpu').item() / ratio - pad_h 
+            y1 = main_box_corner[i, 3].to('cpu').item() / ratio - pad_h
             im_crop = img_with_boxes.crop((x0, y0, x1, y1))
             #im_crop.save(target_path+str(i)+".jpg")
             image_path = target_path+str(i)+".jpg"
@@ -148,27 +171,48 @@ def single_img_detect(target_path,output_path,mode,model,device,conf_thres,nms_t
                 out = np.concatenate((out, chan), axis=0)
             output_path_k = "outputs_k/visualization/"
             #cv2.imwrite(output_path_k + img_name + "_hm.jpg", out * 255)
-            print(f'please check the output image here: {output_path_k + img_name + "_hm.jpg", out * 255}')
+            #print(f'please check the output image here: {output_path_k + img_name + "_hm.jpg", out * 255}')
             image = cv2.cvtColor(np.array(im_crop),cv2.COLOR_RGB2BGR)
-            h, w, _ = image.shape     
+            h, w, _ = image.shape
             #vis_tensor_and_save(image=image, h=h, w=w, tensor_output=output[1][0].cpu().data, image_name=img_name, output_uri=output_path_k)
-            h2, w2, _ = image2.shape     
+            h2, w2, _ = image2.shape
             vis_tensor_and_save_2(image=image2,x_translation=x0,y_translation=y0, h=h, w=w, tensor_output=output[1][0].cpu().data, image_name=img_name, output_uri=output_path_k,target_path=output_path+"fs.jpeg")
-            (tvec, rvec) = estimatePose(image=image2,x_translation=x0,y_translation=y0, h=h, w=w, tensor_output=output[1][0].cpu().data)
-            if tvec[0] < 50000:
-                ax.scatter(tvec[0], tvec[1], tvec[2])
+            (tvec, rvec, success) = estimatePose(image=image2,x_translation=x0,y_translation=y0, h=h, w=w, tensor_output=output[1][0].cpu().data)
+            tveclist.append(tvec)
+            successlist.append(success)
+
+            #if tvec[0] < 50000 and tvec[1] < 50000 and success:
+            #    ax.scatter(tvec[0], tvec[1])
+                
             image2 = cv2.imread(output_path+"fs.jpeg")
-        plt.show()    
+        end = timer()
+        print("Keypoint Regression + PnP finished: ", (end-start), " seconds")
+        #plt.pause(0.05)
+        #plt.show()
+        #plt.waitforbuttonpress()
+        #plt.clf()
+
+        
+        # get a font
+        fnt = ImageFont.truetype('Pillow/Tests/fonts/FreeMono.ttf', 15)
+
+
         draw = ImageDraw.Draw(img_with_boxes)
         w, h = img_with_boxes.size
+
+        #draw.rectangle((700, 500, 1024, 672), fill = "black", outline="black")
 
         for i in range(len(main_box_corner)):
             x0 = main_box_corner[i, 0].to('cpu').item() / ratio - pad_w
             y0 = main_box_corner[i, 1].to('cpu').item() / ratio - pad_h
             x1 = main_box_corner[i, 2].to('cpu').item() / ratio - pad_w
-            y1 = main_box_corner[i, 3].to('cpu').item() / ratio - pad_h 
-            draw.rectangle((x0, y0, x1, y1), outline="red")
-           
+            y1 = main_box_corner[i, 3].to('cpu').item() / ratio - pad_h
+            if successlist[i] and (tveclist[i])[0] < 6 and (tveclist[i])[1] < 20:
+                # draw text, full opacity
+                draw.ellipse([((tveclist[i][0]+6)/12*324+380,(-tveclist[i][1])/8*172+690),((tveclist[i][0]+6)/12*324+385,(-tveclist[i][1])/8*172+695)], fill="red")
+                draw.text((x0-40,y0-20), "x= "+str(tveclist[i][0])+", y= "+str(tveclist[i][1]), font=fnt, fill=(0,0,0,255))
+            draw.rectangle((x0, y0, x1, y1), outline="black")
+
 
         if mode == 'image':
             img_with_boxes.save(os.path.join(output_path,target_path.split('/')[-1]))
@@ -178,12 +222,13 @@ def single_img_detect(target_path,output_path,mode,model,device,conf_thres,nms_t
             return target_path
 
 
+
 def estimatePose(image, x_translation, y_translation, h, w, tensor_output):
-    #2D image points. 
+    #2D image points.
     image_points = []
-    print("Cone points: ")
+    #print("Cone points: ")
     for pt in np.array(tensor_output):
-        print(pt[0]*w,pt[1]*h)
+        #print(pt[0]*w,pt[1]*h)
         image_points.append((pt[0]*w+x_translation,pt[1]*h+y_translation))
 
     image_points = np.array(image_points)
@@ -201,29 +246,29 @@ def estimatePose(image, x_translation, y_translation, h, w, tensor_output):
 
     # Camera internals
     camera_matrix = np.array(
-                            [[517.306408, 0,318.643040],
-                            [0, 517.306408, 255.313989],
+                            [[535.4, 0,512],
+                            [0, 539.2, 360],
                             [0, 0, 1]], dtype = "double"
                             )
 
 
     #dist_coeffs = np.zeros((1,4))
     dist_coeffs = np.array([0.262383, -0.953104, -0.005358, 0.002628, 1.163314], dtype = "double")
-    (success, rotation_vector, translation_vector, inliners) = cv2.solvePnPRansac(model_points, image_points, camera_matrix, dist_coeffs, reprojectionError=100, confidence=0.9)
-    
-    
-    print ("Rotation Vector:\n {0}".format(rotation_vector))
-    print ("Translation Vector:\n {0}".format(translation_vector))
+    (success, rotation_vector, translation_vector, inliners) = cv2.solvePnPRansac(model_points, image_points, camera_matrix, dist_coeffs, reprojectionError=100, iterationsCount = 10, confidence=0.9, flags = 0)
 
-    print ("Inliners:\n {0}".format(inliners))
+
+    #print ("Rotation Vector:\n {0}".format(rotation_vector))
+    #print ("Translation Vector:\n {0}".format(translation_vector))
+
+    #print ("Inliners:\n {0}".format(success))
 
     translation_vector = translation_vector.reshape(1,3)
     translation_vector[0][1] = translation_vector[0][2]
     translation_vector[0][2] = 0
-    translation_vector=translation_vector/10000
-    
-    
-    return translation_vector[0], rotation_vector
+    translation_vector=translation_vector/1000
+
+
+    return translation_vector[0], rotation_vector, success
 
 def detect(target_path,
            output_path,
@@ -241,19 +286,21 @@ def detect(target_path,
 
         if os.path.splitext(target_filepath)[-1].lower() in img_formats:
             mode = 'image'
-        
+
         elif os.path.splitext(target_filepath)[-1].lower() in vid_formats:
             mode = 'video'
-        
+
         print("Detection Mode is: " + mode)
 
         raw_file_name = target_filepath.split('/')[-1].split('.')[0].split('_')[-4:]
         raw_file_name = '_'.join(raw_file_name)
-        
-        if mode == 'image':
-            detection_path = single_img_detect(target_path=target_filepath,output_path=output_path,mode=mode,model=model,device=device,conf_thres=conf_thres,nms_thres=nms_thres,model_k1=model_k)
 
-            print(f'Please check output image at {detection_path}')
+        if mode == 'image':
+            start = timer()
+            detection_path = single_img_detect(target_path=target_filepath,output_path=output_path,mode=mode,model=model,device=device,conf_thres=conf_thres,nms_thres=nms_thres,model_k1=model_k)
+            end = timer()
+            print("single_img_detect executed", end-start)
+            #print(f'Please check output image at {detection_path}')
 
         elif mode == 'video':
             if os.path.exists(detection_tmp_path):
@@ -265,7 +312,7 @@ def detect(target_path,
             count = 0
 
             while success:
-                cv2.imwrite(detection_tmp_path + "/frame%d.jpg" % count, image)     # save frame as JPEG file      
+                cv2.imwrite(detection_tmp_path + "/frame%d.jpg" % count, image)     # save frame as JPEG file
                 success,image = vidcap.read()
                 count += 1
 
@@ -278,16 +325,16 @@ def detect(target_path,
             else :
                 fps = vidcap.get(cv2.CAP_PROP_FPS)
                 print ("Frames per second using video.get(cv2.CAP_PROP_FPS) : {0}".format(fps))
-            vidcap.release(); 
+            vidcap.release();
 
             frame_array = []
             files = [f for f in os.listdir(detection_tmp_path) if isfile(join(detection_tmp_path, f))]
-        
+
             #for sorting the file names properly
             files.sort(key = lambda x: int(x[5:-4]))
             for i in tqdm(files,desc='Doing Single Image Detection'):
                 filename=detection_tmp_path + i
-                
+
                 detection_path = single_img_detect(target_path=filename,output_path=output_path,mode=mode,model=model,device=device,conf_thres=conf_thres,nms_thres=nms_thres,model_k1=model_k)
                 #reading each files
                 img = cv2.imread(detection_path)
@@ -296,7 +343,7 @@ def detect(target_path,
                 frame_array.append(img)
 
             local_output_uri = output_path + raw_file_name + ".mp4"
-            
+
             video_output = cv2.VideoWriter(local_output_uri,cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
 
             for frame in tqdm(frame_array,desc='Creating Video'):
@@ -305,8 +352,8 @@ def detect(target_path,
             video_output.release()
             print(f'please check output video at {local_output_uri}')
             shutil.rmtree(detection_tmp_path)
-        print("Please go to the link below to check the detection output file: ")
-        print(output_path)
+        #print("Please go to the link below to check the detection output file: ")
+        #print(output_path)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
