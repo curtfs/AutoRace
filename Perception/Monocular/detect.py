@@ -33,6 +33,7 @@ from utils.utils import xywh2xyxy, calculate_padding
 
 import warnings
 from tqdm import tqdm
+from color_classification_image import predict_color
 
 warnings.filterwarnings("ignore")
 
@@ -155,12 +156,14 @@ def single_img_detect(target_path,output_path,mode,model,device,conf_thres,nms_t
             img_size=80
             image_size = (img_size, img_size)
             image = cv2.cvtColor(np.array(im_crop),cv2.COLOR_RGB2BGR)
+            image2 = cv2.cvtColor(np.array(im_crop),cv2.COLOR_RGB2BGR)
             h, w, _ = image.shape
             image = prep_image(image=image,target_image_size=image_size)
             image = (image.transpose((2, 0, 1)) / 255.0)[np.newaxis, :]
             image = torch.from_numpy(image).type('torch.FloatTensor')
             output = model_k1(image)
-
+            color=predict_color(image2)
+            print(color)
             out = np.empty(shape=(0, output[0][0].shape[2]))
             for o in output[0][0]:
                 chan = np.array(o.cpu().data)
