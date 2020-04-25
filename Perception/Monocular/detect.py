@@ -142,6 +142,7 @@ def single_img_detect(target_path,output_path,mode,model,device,conf_thres,nms_t
         ax.set_ylim(-1, 15)
         tveclist = []
         successlist = []
+        colorlist=[]
         for i in range(len(main_box_corner)):
             x0 = main_box_corner[i, 0].to('cpu').item() / ratio - pad_w
             y0 = main_box_corner[i, 1].to('cpu').item() / ratio - pad_h
@@ -163,7 +164,7 @@ def single_img_detect(target_path,output_path,mode,model,device,conf_thres,nms_t
             image = torch.from_numpy(image).type('torch.FloatTensor')
             output = model_k1(image)
             color=predict_color(image2)
-            print(color)
+            colorlist.append(color)
             out = np.empty(shape=(0, output[0][0].shape[2]))
             for o in output[0][0]:
                 chan = np.array(o.cpu().data)
@@ -212,7 +213,7 @@ def single_img_detect(target_path,output_path,mode,model,device,conf_thres,nms_t
             y1 = main_box_corner[i, 3].to('cpu').item() / ratio - pad_h
             if successlist[i] and (tveclist[i])[0] < 6 and (tveclist[i])[1] < 20:
                 # draw text, full opacity
-                draw.ellipse([((tveclist[i][0]+6)/12*324+380,(-tveclist[i][1])/8*172+690),((tveclist[i][0]+6)/12*324+385,(-tveclist[i][1])/8*172+695)], fill="red")
+                draw.ellipse([((tveclist[i][0]+6)/12+w/2,(-tveclist[i][1])/8*172+h/2),((tveclist[i][0]+6)/12*324+w/2,(-tveclist[i][1])/8*172+h/2)], fill=colorlist[i])
                 draw.text((x0-40,y0-20), "x= "+str(tveclist[i][0])+", y= "+str(tveclist[i][1]), font=fnt, fill=(0,0,0,255))
             draw.rectangle((x0, y0, x1, y1), outline="black")
 
@@ -248,15 +249,22 @@ def estimatePose(image, x_translation, y_translation, h, w, tensor_output):
                             ])
 
     # Camera internals
+    #ZED Camera
     camera_matrix = np.array(
-                            [[535.4, 0,512],
-                            [0, 539.2, 360],
+                            [[343.870361328125, 0,338.4973449707031],
+                            [0, 343.870361328125, 193.01925659179688],
                             [0, 0, 1]], dtype = "double"
                             )
+    #AMZ Camera
+    # camera_matrix = np.array(
+    #                         [[535.4, 0,512],
+    #                         [0, 539.2, 360],
+    #                         [0, 0, 1]], dtype = "double"
+    #                         )
 
 
-    #dist_coeffs = np.zeros((1,4))
-    dist_coeffs = np.array([0.262383, -0.953104, -0.005358, 0.002628, 1.163314], dtype = "double")
+    dist_coeffs = np.zeros((1,4))
+    #dist_coeffs = np.array([0.262383, -0.953104, -0.005358, 0.002628, 1.163314], dtype = "double")
     (success, rotation_vector, translation_vector, inliners) = cv2.solvePnPRansac(model_points, image_points, camera_matrix, dist_coeffs, reprojectionError=100, iterationsCount = 10, confidence=0.9, flags = 0)
 
 
