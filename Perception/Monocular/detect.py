@@ -188,7 +188,7 @@ def single_img_detect(target_path,output_path,mode,model,device,conf_thres,nms_t
             tveclist.append(tvec)
             successlist.append(success)
             
-            if (tveclist[i][1] < 4.6 and tveclist[i][1] > 1.0):
+            if (tveclist[i][1] < 3.4 and tveclist[i][1] > 1.0):
                 print(str(tveclist[i][1]))
                 startColor = timer()
                 obj = ColorDetect()
