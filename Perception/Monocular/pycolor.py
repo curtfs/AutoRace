@@ -80,10 +80,10 @@ class ColorDetect:
         clt.fit(img_final)
         hist = self.centroid_histogram(clt)
         bar = self.plot_colors(hist, clt.cluster_centers_)
-        plt.figure()
-        plt.axis("off")
-        plt.imshow(bar)
-        plt.show()
+        #plt.figure()
+        #plt.axis("off")
+        #plt.imshow(bar)
+        #plt.show()
         for (percent, color) in zip(hist, clt.cluster_centers_):
 
             requested_colour = color
@@ -95,7 +95,7 @@ class ColorDetect:
                                  int(requested_colour[2]))
                 actualhexcod_csv.append(hexcod)
                 colors.append({'hex': hexcod, 'percent': percent * 100})
-                print('red: ',requested_colour[0],'green: ', requested_colour[1],'blue: ',requested_colour[2])
+                #print('red: ',requested_colour[0],'green: ', requested_colour[1],'blue: ',requested_colour[2])
                 color_pred = max(requested_colour[0],requested_colour[1],requested_colour[2])
                 if color_pred == requested_colour[0]:
                     red = red + 1

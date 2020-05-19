@@ -144,7 +144,10 @@ def single_img_detect(target_path,output_path,mode,model,device,conf_thres,nms_t
         tveclist = []
         successlist = []
         colorlist=[]
-        for i in range(len(main_box_corner)-3):
+        number_of_cones = len(main_box_corner)
+        if(number_of_cones > 4):
+            number_of_cones = 4
+        for i in range(len(main_box_corner)):
             x0 = main_box_corner[i, 0].to('cpu').item() / ratio - pad_w
             y0 = main_box_corner[i, 1].to('cpu').item() / ratio - pad_h
             x1 = main_box_corner[i, 2].to('cpu').item() / ratio - pad_w
@@ -165,9 +168,6 @@ def single_img_detect(target_path,output_path,mode,model,device,conf_thres,nms_t
             image = torch.from_numpy(image).type('torch.FloatTensor')
             output = model_k1(image)
             #color=predict_color(image2)
-            obj = ColorDetect()
-            color = obj.predict(image2)
-            colorlist.append(color)
             out = np.empty(shape=(0, output[0][0].shape[2]))
             for o in output[0][0]:
                 chan = np.array(o.cpu().data)
@@ -187,7 +187,16 @@ def single_img_detect(target_path,output_path,mode,model,device,conf_thres,nms_t
             (tvec, rvec, success) = estimatePose(image=image2,x_translation=x0,y_translation=y0, h=h, w=w, tensor_output=output[1][0].cpu().data)
             tveclist.append(tvec)
             successlist.append(success)
-
+            
+            if (tveclist[i][1] < 4.6 and tveclist[i][1] > 1.0):
+                print(str(tveclist[i][1]))
+                startColor = timer()
+                obj = ColorDetect()
+                colorlist.append(obj.predict(image2))
+                endColor = timer()
+                print("Color detection took: ", (endColor - startColor)) 
+            else:
+                colorlist.append("red")
             #if tvec[0] < 50000 and tvec[1] < 50000 and success:
             #    ax.scatter(tvec[0], tvec[1])
                 
