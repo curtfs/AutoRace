@@ -34,6 +34,7 @@ from utils.utils import xywh2xyxy, calculate_padding
 import warnings
 from tqdm import tqdm
 from color_classification_image import predict_color
+from color import *
 
 warnings.filterwarnings("ignore")
 
@@ -143,6 +144,9 @@ def single_img_detect(target_path,output_path,mode,model,device,conf_thres,nms_t
         tveclist = []
         successlist = []
         colorlist=[]
+        number_of_cones = len(main_box_corner)
+        if(number_of_cones > 4):
+            number_of_cones = 4
         for i in range(len(main_box_corner)):
             x0 = main_box_corner[i, 0].to('cpu').item() / ratio - pad_w
             y0 = main_box_corner[i, 1].to('cpu').item() / ratio - pad_h
@@ -163,8 +167,7 @@ def single_img_detect(target_path,output_path,mode,model,device,conf_thres,nms_t
             image = (image.transpose((2, 0, 1)) / 255.0)[np.newaxis, :]
             image = torch.from_numpy(image).type('torch.FloatTensor')
             output = model_k1(image)
-            color=predict_color(image2)
-            colorlist.append(color)
+            #color=predict_color(image2)
             out = np.empty(shape=(0, output[0][0].shape[2]))
             for o in output[0][0]:
                 chan = np.array(o.cpu().data)
@@ -184,7 +187,16 @@ def single_img_detect(target_path,output_path,mode,model,device,conf_thres,nms_t
             (tvec, rvec, success) = estimatePose(image=image2,x_translation=x0,y_translation=y0, h=h, w=w, tensor_output=output[1][0].cpu().data)
             tveclist.append(tvec)
             successlist.append(success)
-
+            
+            if (tveclist[i][1] < 4.6 and tveclist[i][1] > 1.0):
+                print(str(tveclist[i][1]))
+                startColor = timer()
+                obj = ColorDetect()
+                colorlist.append(obj.predict(image2))
+                endColor = timer()
+                print("Color detection took: ", (endColor - startColor)) 
+            else:
+                colorlist.append("red")
             #if tvec[0] < 50000 and tvec[1] < 50000 and success:
             #    ax.scatter(tvec[0], tvec[1])
                 
@@ -213,7 +225,7 @@ def single_img_detect(target_path,output_path,mode,model,device,conf_thres,nms_t
             y1 = main_box_corner[i, 3].to('cpu').item() / ratio - pad_h
             if successlist[i] and (tveclist[i])[0] < 6 and (tveclist[i])[1] < 20:
                 # draw text, full opacity
-                draw.ellipse([((tveclist[i][0]+6)/12+w/2,(-tveclist[i][1])/8*172+h/2),((tveclist[i][0]+6)/12*324+w/2,(-tveclist[i][1])/8*172+h/2)], fill=colorlist[i])
+                draw.ellipse([((tveclist[i][0]+6)/12*324+420,(-tveclist[i][1])/8*172+680),((tveclist[i][0]+6)/12*324+425,(-tveclist[i][1])/8*172+685)], fill=colorlist[i])
                 draw.text((x0-40,y0-20), "x= "+str(tveclist[i][0])+", y= "+str(tveclist[i][1]), font=fnt, fill=(0,0,0,255))
             draw.rectangle((x0, y0, x1, y1), outline="black")
 
