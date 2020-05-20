@@ -1,5 +1,6 @@
 # Cairo University Racing Team 2020 Driverless Electric Racing Vehicle
 
+## Perception Pipeline Output
 ![](/Perception/Monocular/outputs/visualization/Perception_Output.gif)
 
 ## Technical Requirements
