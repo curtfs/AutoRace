@@ -1,5 +1,7 @@
 # Cairo University Racing Team 2020 Driverless Electric Racing Vehicle
 
+![](/Perception/Monocular/outputs/visualization/Perception_Output.gif)
+
 ## Technical Requirements
 ### Mapping Accuracy
 On average state estimation tolerance is less than 0.5 m localization error on the maximum look ahead distance.
