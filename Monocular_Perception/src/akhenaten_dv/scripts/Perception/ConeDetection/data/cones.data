@@ -1,0 +1,4 @@
+classes=3
+train=data/cones.txt
+valid=data/cones_validate.txt
+names=data/cones.names

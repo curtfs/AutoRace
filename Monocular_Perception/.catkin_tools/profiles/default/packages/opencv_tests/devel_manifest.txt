@@ -1,0 +1,5 @@
+vision_opencv/opencv_tests
+/home/aimokhtar/py3_ws/devel/.private/opencv_tests/cmake.lock /home/aimokhtar/py3_ws/devel/./cmake.lock
+/home/aimokhtar/py3_ws/devel/.private/opencv_tests/share/opencv_tests/cmake/opencv_testsConfig-version.cmake /home/aimokhtar/py3_ws/devel/share/opencv_tests/cmake/opencv_testsConfig-version.cmake
+/home/aimokhtar/py3_ws/devel/.private/opencv_tests/share/opencv_tests/cmake/opencv_testsConfig.cmake /home/aimokhtar/py3_ws/devel/share/opencv_tests/cmake/opencv_testsConfig.cmake
+/home/aimokhtar/py3_ws/devel/.private/opencv_tests/lib/pkgconfig/opencv_tests.pc /home/aimokhtar/py3_ws/devel/lib/pkgconfig/opencv_tests.pc
