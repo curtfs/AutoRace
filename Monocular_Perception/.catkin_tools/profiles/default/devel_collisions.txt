@@ -1,1 +1,0 @@
-/home/aimokhtar/py3_ws/devel/./cmake.lock 480

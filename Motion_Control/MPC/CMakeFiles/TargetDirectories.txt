@@ -1,3 +1,0 @@
-/home/aimokhtar/Projects/CURT-FSAI/Motion Control/MPCC/C++/CMakeFiles/rebuild_cache.dir
-/home/aimokhtar/Projects/CURT-FSAI/Motion Control/MPCC/C++/CMakeFiles/MPCC.dir
-/home/aimokhtar/Projects/CURT-FSAI/Motion Control/MPCC/C++/CMakeFiles/edit_cache.dir
