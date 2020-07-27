@@ -14,9 +14,6 @@
   <node pkg="tf" type="static_transform_publisher" name="per_slam_tf_1" args="0 0 0 0 0 0 1 base_link zed_center 100" />
   <node pkg="tf" type="static_transform_publisher" name="per_slam_tf_2" args="0 0 0 0 0 0 1 map odom 100" />
 
-  <!-- Perception pipeline -->
-  <!--node pkg="perception_pipeline" type="perception_pipeline.py" name="perception_pipeline" clear_params="true"/-->
-
   <!-- Reactive Mapping -->
   <node pkg="reactive_mapping" type="reactive_mapping.py" name="reactive_mapping" clear_params="true"  />
 
